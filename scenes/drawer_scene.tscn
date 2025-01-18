@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt2ya7up0nraj"]
+
+[ext_resource type="Script" path="res://scripts/drawer_scene.gd" id="1_adthk"]
+[ext_resource type="Texture2D" uid="uid://jkxljm65lc38" path="res://art/dice1.jpeg" id="2_c2ggs"]
+[ext_resource type="Script" path="res://scripts/dice.gd" id="3_tibtw"]
+[ext_resource type="Script" path="res://scripts/roll_button.gd" id="4_b4cr5"]
+
+[node name="DrawerScene" type="Node2D"]
+script = ExtResource("1_adthk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(62, 31)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1054.0
+offset_top = 587.0
+offset_right = 1116.0
+offset_bottom = 618.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="Dice1" type="Sprite2D" parent="."]
+position = Vector2(471, 436)
+texture = ExtResource("2_c2ggs")
+script = ExtResource("3_tibtw")
+
+[node name="Dice2" type="Sprite2D" parent="."]
+position = Vector2(613, 167)
+texture = ExtResource("2_c2ggs")
+script = ExtResource("3_tibtw")
+
+[node name="Dice3" type="Sprite2D" parent="."]
+position = Vector2(471, 167)
+texture = ExtResource("2_c2ggs")
+script = ExtResource("3_tibtw")
+
+[node name="Dice4" type="Sprite2D" parent="."]
+position = Vector2(616, 436)
+texture = ExtResource("2_c2ggs")
+script = ExtResource("3_tibtw")
+
+[node name="Roll" type="Button" parent="."]
+custom_minimum_size = Vector2(62, 31)
+offset_left = 721.0
+offset_top = 291.0
+offset_right = 783.0
+offset_bottom = 322.0
+text = "Roll
+"
+script = ExtResource("4_b4cr5")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Roll" to="Roll" method="_on_pressed"]

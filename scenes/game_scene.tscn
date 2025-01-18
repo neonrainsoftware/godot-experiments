@@ -1,0 +1,152 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtk64qk3dhaag"]
+
+[ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_45x24"]
+[ext_resource type="Texture2D" uid="uid://dqyk7u1cknwd8" path="res://art/egg.jpeg" id="1_exvx2"]
+[ext_resource type="Script" path="res://scripts/location.gd" id="1_t0jii"]
+[ext_resource type="Script" path="res://scripts/grow_button.gd" id="2_7i1aa"]
+[ext_resource type="Script" path="res://scripts/egg.gd" id="3_m21td"]
+[ext_resource type="Texture2D" uid="uid://jkxljm65lc38" path="res://art/dice1.jpeg" id="6_8mloy"]
+[ext_resource type="Script" path="res://scripts/dice.gd" id="7_s4ma7"]
+[ext_resource type="Script" path="res://scripts/roll_button.gd" id="8_3hayq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4have"]
+
+[sub_resource type="Theme" id="Theme_mdg0u"]
+
+[sub_resource type="Theme" id="Theme_kgxx6"]
+
+[node name="Main Scene" type="Node2D"]
+script = ExtResource("1_45x24")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4have")
+custom_minimum_size = Vector2(1024, 0)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Egg" type="Sprite2D" parent="."]
+position = Vector2(577, 253)
+texture = ExtResource("1_exvx2")
+script = ExtResource("3_m21td")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Egg"]
+
+[node name="Energy" type="Label" parent="Egg/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Energy: 0"
+
+[node name="Grow" type="Button" parent="."]
+offset_left = 66.0
+offset_top = 561.0
+offset_right = 128.0
+offset_bottom = 592.0
+text = "Grow"
+script = ExtResource("2_7i1aa")
+
+[node name="Location 1" type="Button" parent="."]
+custom_minimum_size = Vector2(62, 31)
+offset_left = 73.0
+offset_top = 312.0
+offset_right = 161.0
+offset_bottom = 343.0
+theme = SubResource("Theme_mdg0u")
+text = "Location 1
+"
+script = ExtResource("1_t0jii")
+
+[node name="Location 2" type="Button" parent="."]
+custom_minimum_size = Vector2(62, 31)
+offset_left = 545.0
+offset_top = 38.0
+offset_right = 633.0
+offset_bottom = 69.0
+text = "Location 2
+"
+script = ExtResource("1_t0jii")
+
+[node name="Location 3" type="Button" parent="."]
+custom_minimum_size = Vector2(62, 31)
+offset_left = 1023.0
+offset_top = 319.0
+offset_right = 1111.0
+offset_bottom = 350.0
+theme = SubResource("Theme_kgxx6")
+text = "Location 3
+"
+script = ExtResource("1_t0jii")
+
+[node name="Drawer" type="Button" parent="."]
+custom_minimum_size = Vector2(62, 31)
+offset_left = 1048.0
+offset_top = 572.0
+offset_right = 1110.0
+offset_bottom = 603.0
+text = "Drawer
+"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 1841.0
+offset_top = -1.0
+offset_right = 2993.0
+offset_bottom = 647.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(62, 31)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2895.0
+offset_top = 586.0
+offset_right = 2957.0
+offset_bottom = 617.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="Dice1" type="Sprite2D" parent="."]
+position = Vector2(2312, 435)
+texture = ExtResource("6_8mloy")
+script = ExtResource("7_s4ma7")
+
+[node name="Dice2" type="Sprite2D" parent="."]
+position = Vector2(2454, 166)
+texture = ExtResource("6_8mloy")
+script = ExtResource("7_s4ma7")
+
+[node name="Dice3" type="Sprite2D" parent="."]
+position = Vector2(2312, 166)
+texture = ExtResource("6_8mloy")
+script = ExtResource("7_s4ma7")
+
+[node name="Dice4" type="Sprite2D" parent="."]
+position = Vector2(2457, 435)
+texture = ExtResource("6_8mloy")
+script = ExtResource("7_s4ma7")
+
+[node name="Roll" type="Button" parent="."]
+custom_minimum_size = Vector2(62, 31)
+offset_left = 2562.0
+offset_top = 290.0
+offset_right = 2624.0
+offset_bottom = 321.0
+text = "Roll
+"
+script = ExtResource("8_3hayq")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Grow" to="Egg" method="_on_button_pressed"]
+[connection signal="pressed" from="Location 1" to="Location 1" method="_on_pressed"]
+[connection signal="pressed" from="Location 2" to="Location 2" method="_on_pressed"]
+[connection signal="pressed" from="Location 3" to="Location 3" method="_on_pressed"]
+[connection signal="pressed" from="Drawer" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Roll" to="Roll" method="_on_pressed"]
